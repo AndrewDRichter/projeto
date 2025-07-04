@@ -12,11 +12,22 @@ interface DataProps {
   }
 }
 
-async function getData() {
-  // https://api.github.com/users/AndrewDRichter/repos
-  const response = await fetch("https://api.github.com/users/AndrewDRichter/repos")
-
+async function delayFetch(url: string, delay: number) {
+  await new Promise(resolve => setTimeout(resolve, delay))
+  const response = await fetch(url);
   return response.json();
+}
+
+// async function getData() {
+//   // https://api.github.com/users/AndrewDRichter/repos
+//   const response = await fetch("https://api.github.com/users/AndrewDRichter/repos")
+
+//   return response.json();
+// }
+
+async function getData() {
+  const data = await delayFetch("https://api.github.com/users/AndrewDRichter/repos", 2000)
+  return data;
 }
 
 
