@@ -1,3 +1,4 @@
+import { OwnerRepo } from '@/components/ownerRepo/index';
 
 interface DataProps {
   id: number;
@@ -45,6 +46,10 @@ export default async function Home() {
         <div key={repo.id}>
           <strong>{repo.full_name}</strong>
           <br />
+          <OwnerRepo
+            avatar_url={repo.owner.avatar_url}
+            name={repo.owner.login}
+          />
           <br />
         </div>
       ))}
